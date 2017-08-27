@@ -1,5 +1,9 @@
 package com.xtilyna.booksbay.booksbay.login;
 
 
-public class LoginRepository {
+public interface LoginRepository {
+
+    void loginUser(String email, String passsword);
+    void createLoginSession();
+
 }

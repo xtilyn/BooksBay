@@ -4,6 +4,7 @@ package com.xtilyna.booksbay.booksbay.home.events;
 public class HomeEvent {
 
     public final static int onFailedToRecoverSession = 0;
+    public final static int onNoPostsToShowError = 1;
 
 
     private int eventType;
