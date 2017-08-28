@@ -9,6 +9,5 @@ public interface HomeRepository {
 
     void loadContent();
     void createAPost();
-    void checkLogin();
 
 }

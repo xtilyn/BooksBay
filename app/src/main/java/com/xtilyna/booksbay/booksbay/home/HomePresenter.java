@@ -9,7 +9,6 @@ public interface HomePresenter {
     void onStop();
 
     void createAPost();
-    void checkLogin();
     void onEventMainThread(HomeEvent event);
 
 }

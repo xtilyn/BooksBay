@@ -24,7 +24,7 @@ public class HomeRepositoryImpl implements HomeRepository{
 
 
 
-    public HomeRepositoryImpl(Context context) {
+    HomeRepositoryImpl(Context context) {
         Log.d(TAG, "Created new HomeRepositoryImpl");
         this.context = context;
         mAuth = FirebaseAuth.getInstance();
@@ -37,7 +37,8 @@ public class HomeRepositoryImpl implements HomeRepository{
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Log.d(TAG, "onAuthStateChanged:signed_out. Navigating to LoginActivity...");
+                    postEvent(HomeEvent.onUserNotLoggedInError, null);
                 }
                 // ...
             }
@@ -67,11 +68,6 @@ public class HomeRepositoryImpl implements HomeRepository{
     @Override
     public void createAPost() {
 
-
-    }
-
-    @Override
-    public void checkLogin() {
 
     }
 

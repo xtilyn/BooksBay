@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="com.xtilyna.booksbay.booksbay.login.ui.LoginActivity">
+    android:gravity="center"
+    tools:context="com.xtilyna.booksbay.booksbay.Register.ui.RegisterSectionOne">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageview_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        <EditText
+            android:id="@+id/edittext_display_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/display_name"
+            android:inputType="text" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -43,22 +46,11 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/button_sign_in"
+        android:id="@+id/button_continue"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"/>
-
-    <TextView
-        android:id="@+id/textview_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_an_account"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:background="?attr/selectableItemBackground"/>
-
+        android:text="@string/action_continue"
+        android:onClick="onSectionOneContinuteButtonClick"/>
 
 </LinearLayout>

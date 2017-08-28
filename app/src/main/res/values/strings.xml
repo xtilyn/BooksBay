@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">BooksBay</string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="network_error_message">Network Error</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="action_continue">Continue</string>
+    <string name="display_name">Display name</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="auth_failed">Failed to register new account. Please try again later.</string>
+    <string name="field_required_error">This field is required.</string>
+    <string name="invalid_email_error">This email address is invalid.</string>
+    <string name="invalid_password_error">This password is too short.</string>
+    <string name="email_verification_sent">Email verification sent. Please verify your email to continue using this app.</string>
+    <string name="new_account_created">New account created</string>
 </resources>

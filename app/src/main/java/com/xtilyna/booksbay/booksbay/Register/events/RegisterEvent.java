@@ -1,11 +1,12 @@
-package com.xtilyna.booksbay.booksbay.home.events;
+package com.xtilyna.booksbay.booksbay.Register.events;
 
 
-public class HomeEvent {
 
-    public final static int onFailedToRecoverSession = 0;
-    public final static int onNoPostsToShowError = 1;
-    public final static int onUserNotLoggedInError = 2;
+public class RegisterEvent {
+
+    public final static int onEmailAlreadyExistError = 0;
+    public final static int onFailedToRegisterError = 1;
+    public final static int onRegisterSuccess = 2;
 
     private int eventType;
     private String errorMessage;
@@ -25,4 +26,5 @@ public class HomeEvent {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
 }

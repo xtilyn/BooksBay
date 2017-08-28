@@ -46,16 +46,14 @@ public class HomePresenterImpl implements HomePresenter{
     }
 
     @Override
-    public void checkLogin() {
-
-    }
-
-    @Override
     @Subscribe
     public void onEventMainThread(HomeEvent event) {
         switch (event.getEventType()) {
             case HomeEvent.onFailedToRecoverSession:
                 onFailedToRecoverSession(event.getErrorMessage());
+                break;
+            case HomeEvent.onUserNotLoggedInError:
+                homeView.navigateToLogin();
                 break;
         }
     }

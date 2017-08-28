@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.home.HomePresenter;
 import com.xtilyna.booksbay.booksbay.home.HomePresenterImpl;
+import com.xtilyna.booksbay.booksbay.login.ui.LoginActivity;
 import com.xtilyna.booksbay.booksbay.newPost.ui.NewPostActivity;
 
 import butterknife.BindView;
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        this.homePresenter = new HomePresenterImpl(HomeActivity.this, getApplicationContext());
+        homePresenter = new HomePresenterImpl(HomeActivity.this, getApplicationContext());
 
     }
 
@@ -64,6 +65,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         fab.setVisibility(View.VISIBLE);
         //revyvlerview visible
         linearLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void navigateToLogin() {
+        Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+        finish();
+        startActivity(i);
     }
 
     @Override
