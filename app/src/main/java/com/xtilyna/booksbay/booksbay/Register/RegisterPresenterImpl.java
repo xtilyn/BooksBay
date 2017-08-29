@@ -6,6 +6,7 @@ import android.content.Context;
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Register.events.RegisterEvent;
 import com.xtilyna.booksbay.booksbay.Register.ui.RegisterView;
+import com.xtilyna.booksbay.booksbay.Utils.EmailAddressValidator;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -14,9 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterPresenterImpl implements RegisterPresenter {
-
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     private RegisterRepository registerRepository;
     private RegisterView registerView;
@@ -69,7 +67,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             registerView.setPasswordError(context.getString(R.string.field_required_error));
             return;
         }
-        if (!isEmailValid(email)) {
+        if (!EmailAddressValidator.isEmailValid(email)) {
             registerView.setEmailEdittextError(context.getString(R.string.invalid_email_error));
             return;
         }
@@ -89,11 +87,6 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     }
 
-    private boolean isEmailValid(String email) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        return matcher.find();
-    }
-
     private boolean isPasswordValid(String password) {
         return password.length() > 4;
     }
@@ -106,7 +99,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Subscribe
     @Override
     public void onEventMainThread(RegisterEvent event) {
-        registerView.displayRegisterEventMessage(event.getErrorMessage());
+        registerView.displayRegisterEventMessage(event.getMessage());
         if (event.getEventType() == RegisterEvent.onRegisterSuccess) {
             registerView.onRegisterSuccess();
         }

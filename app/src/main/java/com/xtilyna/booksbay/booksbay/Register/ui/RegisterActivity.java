@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void showProgress(boolean show) {
-
+        // TODO
     }
 
     @Override
@@ -120,6 +120,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onRegisterSuccess() {
+        // TODO displayMessage on register section two fragment
         Toast.makeText(this, getString(R.string.new_account_created), Toast.LENGTH_LONG).show();
     }
 

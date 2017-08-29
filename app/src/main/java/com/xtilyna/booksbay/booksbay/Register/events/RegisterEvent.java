@@ -9,7 +9,7 @@ public class RegisterEvent {
     public final static int onRegisterSuccess = 2;
 
     private int eventType;
-    private String errorMessage;
+    private String message;
 
     public int getEventType() {
         return eventType;
@@ -19,12 +19,12 @@ public class RegisterEvent {
         this.eventType = eventType;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 }

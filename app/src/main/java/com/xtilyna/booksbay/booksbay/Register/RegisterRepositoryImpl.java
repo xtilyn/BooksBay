@@ -56,7 +56,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
         RegisterEvent event = new RegisterEvent();
         event.setEventType(type);
         if (message != null) {
-            event.setErrorMessage(message);
+            event.setMessage(message);
         }
 
         EventBus eventBus = EventBus.getDefault();
