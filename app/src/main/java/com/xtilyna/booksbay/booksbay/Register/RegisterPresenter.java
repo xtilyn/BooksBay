@@ -13,7 +13,6 @@ public interface RegisterPresenter {
     void registerNewUser();
     void goToRegisterSectionTwo();
     void validateSectionOneFields(String displayName, String email, String password);
-    void validateSectionTwoFields();
 
     void onEventMainThread(RegisterEvent event);
 

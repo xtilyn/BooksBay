@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     // UI References
     @BindView(R.id.viewpager_register) NonSwipeableViewPager viewPager;
-    @BindView(R.id.textview_register_event_message) TextView textViewRegisterEventMessage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,14 +113,11 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void displayRegisterEventMessage(String eventMessage) {
-        viewPager.setVisibility(View.GONE);
-        textViewRegisterEventMessage.setText(eventMessage);
-        textViewRegisterEventMessage.setVisibility(View.VISIBLE);
+        registerSectionTwo.setRegisterEventMessage(eventMessage);
     }
 
     @Override
     public void onRegisterSuccess() {
-        // TODO displayMessage on register section two fragment
         Toast.makeText(this, getString(R.string.new_account_created), Toast.LENGTH_LONG).show();
     }
 

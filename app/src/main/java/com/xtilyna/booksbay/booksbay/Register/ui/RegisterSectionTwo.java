@@ -6,25 +6,37 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.xtilyna.booksbay.booksbay.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RegisterSectionTwo extends Fragment {
 
+    // UI References
+    @BindView(R.id.textview_register_event_message) TextView message;
+
 
     public RegisterSectionTwo() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_section_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_register_section_two, container, false);
+        ButterKnife.bind(this, view);
+
+        return view;
+    }
+
+    public void setRegisterEventMessage(String eventMessage) {
+        message.setText(eventMessage);
     }
 
 }

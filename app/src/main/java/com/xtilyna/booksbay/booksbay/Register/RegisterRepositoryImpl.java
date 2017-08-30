@@ -22,7 +22,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     private Context context;
 
 
-    public RegisterRepositoryImpl(Context context) {
+    RegisterRepositoryImpl(Context context) {
         mAuth = FirebaseAuth.getInstance();
         this.context = context;
     }

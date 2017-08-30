@@ -2,12 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.xtilyna.booksbay.booksbay.Register.ui.RegisterSectionTwo">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Register Section Two" />
+   <TextView
+       android:id="@+id/textview_register_event_message"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="18sp"
+       android:gravity="center"
+       android:layout_margin="10dp"
+       android:layout_gravity="center"/>
+
 
 </FrameLayout>

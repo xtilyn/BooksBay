@@ -11,20 +11,12 @@ import com.xtilyna.booksbay.booksbay.Utils.EmailAddressValidator;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterPresenterImpl implements RegisterPresenter {
 
     private RegisterRepository registerRepository;
     private RegisterView registerView;
     private Context context;
-
-    private String displayName;
-    private String email;
-    private String password;
-    private List<String> buyingCategories;
-    private List<String> sellingCategories;
 
 
     public RegisterPresenterImpl(RegisterView registerView, Context context) {
@@ -79,11 +71,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         // if everything else is valid:
         registerView.resetEdittextErrors();
 
-        this.displayName = displayName;
-        this.email = email;
-        this.password = password;
-
-        registerView.goToRegisterSectionTwo();
+        registerRepository.registerNewUser(email, password); // TODO register displayName
 
     }
 
@@ -91,10 +79,6 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         return password.length() > 4;
     }
 
-    @Override
-    public void validateSectionTwoFields() {
-
-    }
 
     @Subscribe
     @Override
