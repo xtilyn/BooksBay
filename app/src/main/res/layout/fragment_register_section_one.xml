@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.xtilyna.booksbay.booksbay.Register.ui.RegisterSectionOne">
+    tools:context="com.xtilyna.booksbay.booksbay.register.ui.RegisterSectionOne">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"

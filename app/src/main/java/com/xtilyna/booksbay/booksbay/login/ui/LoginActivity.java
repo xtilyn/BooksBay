@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xtilyna.booksbay.booksbay.R;
-import com.xtilyna.booksbay.booksbay.Register.ui.RegisterActivity;
+import com.xtilyna.booksbay.booksbay.register.ui.RegisterActivity;
 import com.xtilyna.booksbay.booksbay.login.LoginPresenter;
 import com.xtilyna.booksbay.booksbay.login.LoginPresenterImpl;
 

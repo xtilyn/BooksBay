@@ -23,7 +23,6 @@ public class HomeRepositoryImpl implements HomeRepository{
     private FirebaseAuth.AuthStateListener mAuthListener;
 
 
-
     HomeRepositoryImpl(Context context) {
         Log.d(TAG, "Created new HomeRepositoryImpl");
         this.context = context;

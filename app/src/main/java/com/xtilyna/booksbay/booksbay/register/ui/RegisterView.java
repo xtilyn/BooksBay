@@ -1,17 +1,17 @@
-package com.xtilyna.booksbay.booksbay.Register.ui;
+package com.xtilyna.booksbay.booksbay.register.ui;
 
 
 public interface RegisterView {
 
     void showProgress(boolean show);
-    void goToRegisterSectionTwo();
+    void disableInputs(boolean disable);
 
     void resetEdittextErrors();
     void setEmailEdittextError(String errorMessage);
     void setDisplayNameEdittextError(String errorMessage);
     void setPasswordError(String errorMessage);
 
-    void displayRegisterEventMessage(String eventMessage);
     void onRegisterSuccess();
+    void onRegisterUnsuccessful(String errorMessage);
 
 }

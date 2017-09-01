@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.xtilyna.booksbay.booksbay.Register.ui.RegisterSectionTwo">
+    tools:context="com.xtilyna.booksbay.booksbay.register.ui.RegisterSectionTwo">
 
    <TextView
        android:id="@+id/textview_register_event_message"
@@ -12,7 +12,8 @@
        android:textSize="18sp"
        android:gravity="center"
        android:layout_margin="10dp"
-       android:layout_gravity="center"/>
+       android:layout_gravity="center"
+       android:text="@string/email_verification_sent"/>
 
 
 </FrameLayout>

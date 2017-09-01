@@ -1,4 +1,4 @@
-package com.xtilyna.booksbay.booksbay.Register.events;
+package com.xtilyna.booksbay.booksbay.register.events;
 
 
 

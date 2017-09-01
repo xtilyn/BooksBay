@@ -1,28 +1,25 @@
-package com.xtilyna.booksbay.booksbay.Register.ui;
+package com.xtilyna.booksbay.booksbay.register.ui;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xtilyna.booksbay.booksbay.R;
-import com.xtilyna.booksbay.booksbay.Register.RegisterPresenter;
-import com.xtilyna.booksbay.booksbay.Register.RegisterPresenterImpl;
+import com.xtilyna.booksbay.booksbay.register.RegisterPresenter;
+import com.xtilyna.booksbay.booksbay.register.RegisterPresenterImpl;
 import com.xtilyna.booksbay.booksbay.Utils.NonSwipeableViewPager;
 import com.xtilyna.booksbay.booksbay.Utils.SectionsPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RegisterView{
 
 
     private RegisterPresenter registerPresenter;
     private RegisterSectionOne registerSectionOne;
-    private RegisterSectionTwo registerSectionTwo;
 
     // UI References
     @BindView(R.id.viewpager_register) NonSwipeableViewPager viewPager;
@@ -41,11 +38,10 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     private void setupViewPager() {
         registerSectionOne = new RegisterSectionOne();
-        registerSectionTwo = new RegisterSectionTwo();
 
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(registerSectionOne);
-        adapter.addFragment(registerSectionTwo);
+        adapter.addFragment(new RegisterSectionTwo());
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(this);
@@ -59,7 +55,8 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
         registerPresenter.validateSectionOneFields(
                 registerSectionOne.extractDisplayName(),
                 registerSectionOne.extractEmail(),
-                registerSectionOne.extractPassword()
+                registerSectionOne.extractPassword(),
+                registerSectionOne.extractLocation()
 
         );
     }
@@ -87,8 +84,9 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     }
 
     @Override
-    public void goToRegisterSectionTwo() {
-        viewPager.setCurrentItem(1);
+    public void disableInputs(boolean disable) {
+        // TODO
+        // if (disable) {...}
     }
 
     @Override
@@ -112,13 +110,14 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     }
 
     @Override
-    public void displayRegisterEventMessage(String eventMessage) {
-        registerSectionTwo.setRegisterEventMessage(eventMessage);
+    public void onRegisterSuccess() {
+        viewPager.setCurrentItem(1);
+        Toast.makeText(this, getString(R.string.sign_up_successful), Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onRegisterSuccess() {
-        Toast.makeText(this, getString(R.string.new_account_created), Toast.LENGTH_LONG).show();
+    public void onRegisterUnsuccessful(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
 }

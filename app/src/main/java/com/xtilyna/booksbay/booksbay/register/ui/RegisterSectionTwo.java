@@ -1,4 +1,4 @@
-package com.xtilyna.booksbay.booksbay.Register.ui;
+package com.xtilyna.booksbay.booksbay.register.ui;
 
 
 import android.os.Bundle;
@@ -18,10 +18,6 @@ import butterknife.ButterKnife;
  */
 public class RegisterSectionTwo extends Fragment {
 
-    // UI References
-    @BindView(R.id.textview_register_event_message) TextView message;
-
-
     public RegisterSectionTwo() {
         // Required empty public constructor
     }
@@ -29,14 +25,7 @@ public class RegisterSectionTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_register_section_two, container, false);
-        ButterKnife.bind(this, view);
-
-        return view;
-    }
-
-    public void setRegisterEventMessage(String eventMessage) {
-        message.setText(eventMessage);
+        return inflater.inflate(R.layout.fragment_register_section_two, container, false);
     }
 
 }

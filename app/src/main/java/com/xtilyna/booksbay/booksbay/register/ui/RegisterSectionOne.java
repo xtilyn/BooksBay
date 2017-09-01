@@ -1,6 +1,7 @@
-package com.xtilyna.booksbay.booksbay.Register.ui;
+package com.xtilyna.booksbay.booksbay.register.ui;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,11 +26,14 @@ public class RegisterSectionOne extends Fragment {
     @BindView(R.id.edittext_password) EditText editTextPassword;
     @BindView(R.id.button_continue) Button buttonContinue;
 
+    // TODO
+    private Dialog confirmPasswordDialog;
+    private Dialog setLocationDialog;
+
 
     public RegisterSectionOne() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +54,12 @@ public class RegisterSectionOne extends Fragment {
 
     public String extractPassword() {
         return editTextPassword.getText().toString();
+    }
+
+    public String extractLocation() {
+        // TODO temporary location place holder
+        // get user location automatically, give option to change location manually
+        return "Calgary, Alberta";
     }
 
     public void setEmailEdittextError(String errorMessage) {

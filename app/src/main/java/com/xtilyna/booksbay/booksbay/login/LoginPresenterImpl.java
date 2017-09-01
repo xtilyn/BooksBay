@@ -21,6 +21,6 @@ public class LoginPresenterImpl implements LoginPresenter{
 
     @Override
     public void onEventMainThread(LoginEvent event) {
-
+        // if login success, create new login session
     }
 }

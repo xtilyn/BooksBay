@@ -1,25 +1,32 @@
-package com.xtilyna.booksbay.booksbay.Register;
+package com.xtilyna.booksbay.booksbay.register;
 
 
 import android.content.Context;
+import android.util.Log;
 
 import com.xtilyna.booksbay.booksbay.R;
-import com.xtilyna.booksbay.booksbay.Register.events.RegisterEvent;
-import com.xtilyna.booksbay.booksbay.Register.ui.RegisterView;
+import com.xtilyna.booksbay.booksbay.register.events.RegisterEvent;
+import com.xtilyna.booksbay.booksbay.register.ui.RegisterView;
 import com.xtilyna.booksbay.booksbay.Utils.EmailAddressValidator;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.List;
 
 public class RegisterPresenterImpl implements RegisterPresenter {
 
+    private final static String TAG = "RegisterPresenterImpl";
+
+    private EventBus eventBus;
+
     private RegisterRepository registerRepository;
     private RegisterView registerView;
+
+    // Used for grabbing strings resource
     private Context context;
 
 
     public RegisterPresenterImpl(RegisterView registerView, Context context) {
+        this.eventBus = EventBus.getDefault();
         this.registerView = registerView;
         this.context = context;
         registerRepository = new RegisterRepositoryImpl(context);
@@ -27,26 +34,17 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     @Override
     public void onStart() {
-
+        eventBus.register(this);
     }
 
     @Override
     public void onStop() {
-
+        eventBus.unregister(this);
     }
 
     @Override
-    public void registerNewUser() {
+    public void validateSectionOneFields(String displayName, String email, String password, String location) {
 
-    }
-
-    @Override
-    public void goToRegisterSectionTwo() {
-
-    }
-
-    @Override
-    public void validateSectionOneFields(String displayName, String email, String password) {
         if (displayName.isEmpty()) {
             registerView.setDisplayNameEdittextError(context.getString(R.string.field_required_error));
             return;
@@ -68,10 +66,9 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             return;
         }
 
-        // if everything else is valid:
+        // everything else is valid:
         registerView.resetEdittextErrors();
-
-        registerRepository.registerNewUser(email, password); // TODO register displayName
+        registerRepository.registerNewUser(email, password, displayName, location);
 
     }
 
@@ -83,9 +80,9 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Subscribe
     @Override
     public void onEventMainThread(RegisterEvent event) {
-        registerView.displayRegisterEventMessage(event.getMessage());
-        if (event.getEventType() == RegisterEvent.onRegisterSuccess) {
+        if (event.getEventType() == RegisterEvent.onRegisterSuccess)
             registerView.onRegisterSuccess();
-        }
+        else
+            registerView.onRegisterUnsuccessful(event.getMessage());
     }
 }
