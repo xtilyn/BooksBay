@@ -7,6 +7,7 @@ public class RegisterEvent {
     public final static int onEmailAlreadyExistError = 0;
     public final static int onFailedToRegisterError = 1;
     public final static int onRegisterSuccess = 2;
+    public final static int onVerificationEmailError = 3;
 
     private int eventType;
     private String message;

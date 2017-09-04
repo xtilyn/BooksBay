@@ -7,13 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.xtilyna.booksbay.booksbay.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +28,7 @@ public class RegisterSectionOne extends Fragment {
     @BindView(R.id.edittext_email) EditText editTextEmail;
     @BindView(R.id.edittext_password) EditText editTextPassword;
     @BindView(R.id.button_continue) Button buttonContinue;
-
-    // TODO
-    private Dialog confirmPasswordDialog;
-    private Dialog setLocationDialog;
+    @BindView(R.id.progressbar_register_section_one) ProgressBar progressBar;
 
 
     public RegisterSectionOne() {
@@ -81,6 +81,22 @@ public class RegisterSectionOne extends Fragment {
         editTextDisplayName.setError(null);
         editTextEmail.setError(null);
         editTextPassword.setError(null);
+    }
+
+    public void showProgress(boolean show) {
+        if (show) {
+            progressBar.setVisibility(View.VISIBLE);
+            editTextDisplayName.setEnabled(false);
+            editTextEmail.setEnabled(false);
+            editTextPassword.setEnabled(false);
+            buttonContinue.setEnabled(false);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            editTextDisplayName.setEnabled(true);
+            editTextEmail.setEnabled(true);
+            editTextPassword.setEnabled(true);
+            buttonContinue.setEnabled(true);
+        }
     }
 
 }

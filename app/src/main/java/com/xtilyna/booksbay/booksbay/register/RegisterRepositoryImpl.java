@@ -34,7 +34,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     }
 
     @Override
-    public void registerNewUser(String email, String password, String displayName, String location) { // TODO register displayName
+    public void registerNewUser(String email, String password, String displayName, String location) {
 
         try {
             final FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -50,6 +50,9 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                             // TODO display cause(s) of unsuccessful task (instanceof <FirebaseException>)
                             if (!task.isSuccessful()) {
                                 postEvent(RegisterEvent.onFailedToRegisterError, context.getString(R.string.auth_failed));
+                            } else if (task.isSuccessful()){
+                                Log.d(TAG, "createUserWithEmail: onComplete: sign up successful. Sending verification email...");
+                                sendVerificationEmail();
                             }
                         }
                     });
@@ -59,6 +62,23 @@ public class RegisterRepositoryImpl implements RegisterRepository{
 
         addNewUserAccountSettings(email, displayName, location);
 
+    }
+
+    @Override
+    public void sendVerificationEmail() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (!task.isSuccessful()) {
+                                postEvent(RegisterEvent.onVerificationEmailError, context.getString(R.string.email_verification_error));
+                            }
+                        }
+                    });
+        }
     }
 
     private void addNewUserAccountSettings(final String email, final String displayName, final String location) {
@@ -83,11 +103,6 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             FirebaseAuth.getInstance().signOut();
             postEvent(RegisterEvent.onRegisterSuccess, context.getString(R.string.email_verification_sent));
         }
-
-    }
-
-    @Override
-    public void sendVerificationEmail() {
 
     }
 

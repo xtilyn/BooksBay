@@ -11,7 +11,13 @@ public interface RegisterView {
     void setDisplayNameEdittextError(String errorMessage);
     void setPasswordError(String errorMessage);
 
+    void showConfirmPasswordDialog();
+    void showSetLocationDialog();
+    void dismissConfirmPasswordDialog();
+    void dismissSetLocationDialog();
+
     void onRegisterSuccess();
     void onRegisterUnsuccessful(String errorMessage);
+    void onPasswordsDontMatch();
 
 }

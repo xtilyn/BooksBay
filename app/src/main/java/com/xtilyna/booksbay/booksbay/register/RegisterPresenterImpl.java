@@ -17,12 +17,15 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     private final static String TAG = "RegisterPresenterImpl";
 
     private EventBus eventBus;
-
     private RegisterRepository registerRepository;
     private RegisterView registerView;
 
     // Used for grabbing strings resource
     private Context context;
+
+    private String displayName;
+    private String email;
+    private String password;
 
 
     public RegisterPresenterImpl(RegisterView registerView, Context context) {
@@ -43,7 +46,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     }
 
     @Override
-    public void validateSectionOneFields(String displayName, String email, String password, String location) {
+    public void validateSectionOneFields(String displayName, String email, String password) {
 
         if (displayName.isEmpty()) {
             registerView.setDisplayNameEdittextError(context.getString(R.string.field_required_error));
@@ -66,20 +69,40 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             return;
         }
 
+        this.displayName = displayName;
+        this.email = email;
+        this.password = password;
+
         // everything else is valid:
         registerView.resetEdittextErrors();
-        registerRepository.registerNewUser(email, password, displayName, location);
+        registerView.showConfirmPasswordDialog();
 
+    }
+
+    @Override
+    public void validatePasswordConfirmation(String password1, String password2) {
+        if (password1.equals(password2)) {
+            registerView.dismissConfirmPasswordDialog();
+            registerView.showSetLocationDialog();
+        } else {
+            registerView.onPasswordsDontMatch();
+        }
+    }
+
+    @Override
+    public void registerNewUser(String location) {
+        registerView.showProgress(true);
+        registerRepository.registerNewUser(email, password, displayName, location);
     }
 
     private boolean isPasswordValid(String password) {
         return password.length() > 4;
     }
 
-
     @Subscribe
     @Override
     public void onEventMainThread(RegisterEvent event) {
+        registerView.showProgress(false);
         if (event.getEventType() == RegisterEvent.onRegisterSuccess)
             registerView.onRegisterSuccess();
         else

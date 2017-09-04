@@ -18,4 +18,10 @@
     <string name="sign_up_successful">Sign up successful</string>
     <string name="users">users</string>
     <string name="user_account_settings">user_account_settings</string>
+    <string name="email_verification_error">Could not send email verification. Please try again later.</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="set_your_location">Set your location</string>
+    <string name="set_location">Set location</string>
+    <string name="passwords_dont_match">Password does not match</string>
 </resources>

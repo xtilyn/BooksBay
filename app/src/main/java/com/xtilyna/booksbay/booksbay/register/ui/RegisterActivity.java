@@ -1,9 +1,16 @@
 package com.xtilyna.booksbay.booksbay.register.ui;
 
+import android.app.Dialog;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xtilyna.booksbay.booksbay.R;
@@ -15,14 +22,20 @@ import com.xtilyna.booksbay.booksbay.Utils.SectionsPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RegisterView{
-
+public class RegisterActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RegisterView {
 
     private RegisterPresenter registerPresenter;
     private RegisterSectionOne registerSectionOne;
 
     // UI References
-    @BindView(R.id.viewpager_register) NonSwipeableViewPager viewPager;
+    @BindView(R.id.viewpager_register)
+    NonSwipeableViewPager viewPager;
+
+    private Dialog confirmPasswordDialog;
+    private Dialog setLocationDialog;
+
+    // UI in dialogs
+    EditText confirmPasswordEdittext;
 
 
     @Override
@@ -33,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
         registerPresenter = new RegisterPresenterImpl(this, getApplicationContext());
         setupViewPager();
+        initDialogs();
 
     }
 
@@ -47,28 +61,79 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
         viewPager.addOnPageChangeListener(this);
     }
 
+    private void initDialogs() {
+        confirmPasswordDialog = new Dialog(this);
+        confirmPasswordDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        confirmPasswordDialog.setContentView(R.layout.dialog_confirm_password);
+        confirmPasswordEdittext = confirmPasswordDialog.findViewById(R.id.edittext_dialog_password);
+        confirmPasswordEdittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == R.id.button_dialog_confirm_password || i == EditorInfo.IME_NULL) {
+                    extractAndValidatePasswords();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        setLocationDialog = new Dialog(this);
+        setLocationDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setLocationDialog.setContentView(R.layout.dialog_set_location);
+    }
+
     /**
      * On click listener for continue button in register section one fragment.
+     *
      * @param view view
      */
     public void onSectionOneContinuteButtonClick(View view) {
         registerPresenter.validateSectionOneFields(
                 registerSectionOne.extractDisplayName(),
                 registerSectionOne.extractEmail(),
-                registerSectionOne.extractPassword(),
-                registerSectionOne.extractLocation()
+                registerSectionOne.extractPassword()
 
         );
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    /**
+     * On click listener for continue button in confirm password dialog.
+     * Checks if the entered passwords are the same.
+     *
+     * @param view continue button
+     */
+    public void onConfirmPasswordButtonClick(View view) {
+        extractAndValidatePasswords();
+    }
+
+    /**
+     * On click listener for set location button in set location dialog.
+     * @param view set location button
+     */
+    public void onSetLocationButtonClick(View view) {
+        // TODO placeholder user location...
+        String location = "Calgary, AB";
+        dismissSetLocationDialog();
+        registerPresenter.registerNewUser(location);
+    }
+
+    private void extractAndValidatePasswords() {
+        String password1 = registerSectionOne.extractPassword();
+        String password2 = confirmPasswordEdittext.getText().toString();
+        registerPresenter.validatePasswordConfirmation(password1, password2);
+    }
 
     @Override
-    public void onPageSelected(int position) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onPageSelected(int position) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+    }
 
     @Override
     public void onBackPressed() {
@@ -80,7 +145,11 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void showProgress(boolean show) {
-        // TODO
+        if (show) {
+            registerSectionOne.showProgress(true);
+        } else {
+            registerSectionOne.showProgress(false);
+        }
     }
 
     @Override
@@ -110,6 +179,26 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     }
 
     @Override
+    public void showConfirmPasswordDialog() {
+        confirmPasswordDialog.show();
+    }
+
+    @Override
+    public void showSetLocationDialog() {
+        setLocationDialog.show();
+    }
+
+    @Override
+    public void dismissConfirmPasswordDialog() {
+        confirmPasswordDialog.dismiss();
+    }
+
+    @Override
+    public void dismissSetLocationDialog() {
+        setLocationDialog.dismiss();
+    }
+
+    @Override
     public void onRegisterSuccess() {
         viewPager.setCurrentItem(1);
         Toast.makeText(this, getString(R.string.sign_up_successful), Toast.LENGTH_LONG).show();
@@ -118,6 +207,12 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     @Override
     public void onRegisterUnsuccessful(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onPasswordsDontMatch() {
+        confirmPasswordEdittext.setError(getString(R.string.passwords_dont_match));
+        confirmPasswordEdittext.requestFocus();
     }
 
 }
