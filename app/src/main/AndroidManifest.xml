@@ -30,6 +30,7 @@
         <activity
             android:name=".register.ui.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".menu.ui.MenuActivity"></activity>
     </application>
 
 </manifest>
