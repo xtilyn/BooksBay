@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.menu.MenuPresenter;
+import com.xtilyna.booksbay.booksbay.menu.MenuPresenterImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +40,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
 //                recyclerviewData
 //        );
 
+        menuPresenter = new MenuPresenterImpl(this, getApplicationContext());
         setupDialogs();
 
     }

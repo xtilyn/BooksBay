@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xtilyna.booksbay.booksbay.R;
+import com.xtilyna.booksbay.booksbay.Utils.BottomNavigationHelper;
 import com.xtilyna.booksbay.booksbay.home.HomePresenter;
 import com.xtilyna.booksbay.booksbay.home.HomePresenterImpl;
 import com.xtilyna.booksbay.booksbay.login.ui.LoginActivity;
@@ -26,6 +27,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
     private final static String TAG = "HomeActivity";
 
     private HomePresenter homePresenter;
+    private BottomNavigationHelper bottomNavigationHelper;
 
     // UI References
     @BindView(R.id.create_a_post_fab) FloatingActionButton fab;
@@ -41,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         setSupportActionBar(toolbar);
 
         homePresenter = new HomePresenterImpl(HomeActivity.this, getApplicationContext());
+        bottomNavigationHelper = new BottomNavigationHelper(this);
 
     }
 
@@ -86,5 +89,19 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
         Log.d(TAG, "onStart called");
         homePresenter.onStart();
         super.onStart();
+    }
+
+    /**
+     * On click listener for navigation view
+     * @param view navigation button
+     */
+    @OnClick({
+            R.id.navigation_home,
+            R.id.navigation_messages,
+            R.id.navigation_camera,
+            R.id.navigation_profile,
+            R.id.navigation_menu})
+    public void onNavigationButtonClick(View view) {
+        bottomNavigationHelper.onNavigationButtonClick(view.getId());
     }
 }

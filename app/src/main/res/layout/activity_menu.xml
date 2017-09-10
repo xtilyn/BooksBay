@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context="com.xtilyna.booksbay.booksbay.menu.ui.MenuActivity">
 
-    <include layout="@layout/layout_profile_snippet" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:id="@+id/linearLayout2"
+        android:orientation="vertical"
+        android:layout_above="@+id/include3">
 
-    <!--<android.support.v7.widget.RecyclerView-->
+        <include layout="@layout/layout_profile_snippet" />
+
+        <!--<android.support.v7.widget.RecyclerView-->
         <!--android:id="@+id/recyclerview_menu"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginTop="10dp"-->
         <!--android:layout_marginBottom="10dp">-->
 
-    <!--</android.support.v7.widget.RecyclerView>-->
+        <!--</android.support.v7.widget.RecyclerView>-->
 
-    <Button
-        android:id="@+id/button_logout_menu"
+        <Button
+            android:id="@+id/button_logout_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_out" />
+
+
+
+    </LinearLayout>
+
+
+    <include layout="@layout/layout_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/log_out" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignStart="@+id/linearLayout2"
+        android:id="@+id/include3" />
 
-</LinearLayout>
+</RelativeLayout>

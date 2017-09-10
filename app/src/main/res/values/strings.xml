@@ -27,4 +27,9 @@
     <string name="log_out">Log out</string>
     <string name="confirm_logout">Confirm log out</string>
     <string name="confirm_logout_message">Are you sure you want to log out?</string>
+    <string name="home_navigation_button">Home navigation button</string>
+    <string name="messages_navigation_button">Messages navigation button</string>
+    <string name="camera_navigation_button">Camera navigation button</string>
+    <string name="profile_navigation_button">Profile navigation button</string>
+    <string name="menu_navigation_button">Menu navigation button</string>
 </resources>
