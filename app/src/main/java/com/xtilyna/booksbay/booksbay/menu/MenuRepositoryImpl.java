@@ -38,6 +38,18 @@ public class MenuRepositoryImpl implements MenuRepository {
     }
 
     @Override
+    public void onStart() {
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    @Override
     public void logoutUser() {
         mAuth.signOut();
     }

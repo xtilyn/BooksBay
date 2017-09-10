@@ -34,11 +34,13 @@ public class MenuPresenterImpl implements MenuPresenter {
     @Override
     public void onStart() {
         eventBus.register(this);
+        menuRepository.onStart();
     }
 
     @Override
     public void onStop() {
         eventBus.unregister(this);
+        menuRepository.onStop();
     }
 
     @Override
