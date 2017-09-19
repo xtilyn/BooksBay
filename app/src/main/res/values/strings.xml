@@ -32,4 +32,8 @@
     <string name="camera_navigation_button">Camera navigation button</string>
     <string name="profile_navigation_button">Profile navigation button</string>
     <string name="menu_navigation_button">Menu navigation button</string>
+    <string name="invalidUserErrorMessage">Email does not exist in our database. Please create a new account.</string>
+    <string name="invalidCredentialsErrorMessage">Password is invalid. Please try again.</string>
+    <string name="signInErrorMessage">Could not fetch data. Please try again later.</string>
+    <string name="emailNotVerifiedErrorMessage">Email is not verified. Please check your inbox.</string>
 </resources>
