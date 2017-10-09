@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "531531835680",
+    "firebase_url": "https://booksbay-6d468.firebaseio.com",
+    "project_id": "booksbay-6d468",
+    "storage_bucket": "booksbay-6d468.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531531835680:android:121db619f42ea148",
+        "android_client_info": {
+          "package_name": "com.xtilyna.booksbay.booksbay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531531835680-pll270p5i0aqbkcp3qcgv6hd560ho99m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xtilyna.booksbay.booksbay",
+            "certificate_hash": "791a4646e15c1ec3fb7f2303c0e3f1a34a5fca9c"
+          }
+        },
+        {
+          "client_id": "531531835680-ap48cg5fm819kig2mqq5m4enqlvbudce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc1tar5yrE6Izbs-lMduYYmm36COSNXBs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531531835680-ap48cg5fm819kig2mqq5m4enqlvbudce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
