@@ -47,12 +47,14 @@ public class HomeRepositoryImpl implements HomeRepository{
     @Override
     public void onStart() {
         mAuth.addAuthStateListener(mAuthListener);
+        Log.d(TAG, "onStart: authStateListener added");
     }
 
     @Override
     public void onStop() {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
+            Log.d(TAG, "onStart: authStateListener removed");
         }
     }
 

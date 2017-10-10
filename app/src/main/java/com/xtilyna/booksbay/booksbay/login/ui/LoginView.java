@@ -5,7 +5,6 @@ public interface LoginView {
 
     void showProgress(boolean show);
 
-    void resetEdittextErrors();
     void setEmailEdittextError(String errorMessage);
     void setPasswordError(String errorMessage);
 

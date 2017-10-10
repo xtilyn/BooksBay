@@ -2,6 +2,8 @@ package com.xtilyna.booksbay.booksbay.login;
 
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Utils.EmailAddressValidator;
@@ -9,6 +11,7 @@ import com.xtilyna.booksbay.booksbay.login.events.LoginEvent;
 import com.xtilyna.booksbay.booksbay.login.ui.LoginView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 public class LoginPresenterImpl implements LoginPresenter{
 
@@ -31,21 +34,23 @@ public class LoginPresenterImpl implements LoginPresenter{
     @Override
     public void onStart() {
         eventBus.register(this);
+        Log.d(TAG, "onStart: eventbus registered");
     }
 
     @Override
     public void onStop() {
         eventBus.unregister(this);
-    }
+        Log.d(TAG, "onStop: eventbus unregistered");
+}
 
     @Override
     public void validateLogin(String email, String password) {
 
-        if (email.isEmpty()) {
+        if (TextUtils.isEmpty(email)) {
             loginView.setEmailEdittextError(context.getString(R.string.field_required_error));
             return;
         }
-        if (password.isEmpty()) {
+        if (TextUtils.isEmpty(password)) {
             loginView.setPasswordError(context.getString(R.string.field_required_error));
             return;
         }
@@ -64,6 +69,7 @@ public class LoginPresenterImpl implements LoginPresenter{
     }
 
     @Override
+    @Subscribe
     public void onEventMainThread(LoginEvent event) {
         loginView.showProgress(false);
         // TODO

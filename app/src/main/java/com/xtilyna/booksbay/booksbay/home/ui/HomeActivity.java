@@ -79,14 +79,12 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
 
     @Override
     protected void onStop() {
-        Log.d(TAG, "onStop called");
         homePresenter.onStop();
         super.onStop();
     }
 
     @Override
     protected void onStart() {
-        Log.d(TAG, "onStart called");
         homePresenter.onStart();
         super.onStart();
     }

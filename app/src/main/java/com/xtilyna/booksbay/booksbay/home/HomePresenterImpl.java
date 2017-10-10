@@ -31,12 +31,14 @@ public class HomePresenterImpl implements HomePresenter{
     @Override
     public void onStart() {
         eventBus.register(this);
+        Log.d(TAG, "onStart: eventbus registered");
         homeRepository.onStart();
     }
 
     @Override
     public void onStop() {
         eventBus.unregister(this);
+        Log.d(TAG, "onStart: eventbus unregistered");
         homeRepository.onStop();
     }
 

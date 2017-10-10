@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xtilyna.booksbay.booksbay.R;
@@ -29,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @BindView(R.id.edittext_email) TextInputEditText editTextEmail;
     @BindView(R.id.edittext_password) TextInputEditText editTextPassword;
     @BindView(R.id.textview_register) TextView textViewRegister;
+    @BindView(R.id.button_login) Button buttonLogin;
+    @BindView(R.id.progressbar_login) ProgressBar progressBarLogin;
 
 
     @Override
@@ -52,14 +57,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         });
     }
 
+    @Override
+    protected void onStart() {
+        loginPresenter.onStart();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        loginPresenter.onStop();
+        super.onStop();
+    }
+
     @OnClick(R.id.textview_register)
     public void goToRegisterActivity() {
+        Log.d(TAG, "goToRegisterActivity: navigating to register activity...");
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.button_sign_in)
+    @OnClick(R.id.button_login)
     public void onSignInButtonClick() {
+        Log.d(TAG, "onSignInButtonClick: validating credentials...");
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
         loginPresenter.validateLogin(email, password);
@@ -67,27 +86,39 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void showProgress(boolean show) {
-        // TODO
-        // toggle disable inputs as needed
-    }
-
-    @Override
-    public void resetEdittextErrors() {
-
+        if (show) {
+            disableInputs(true);
+            progressBarLogin.setVisibility(View.VISIBLE);
+        } else {
+            disableInputs(false);
+            progressBarLogin.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void setEmailEdittextError(String errorMessage) {
-
+        editTextEmail.setError(errorMessage);
+        editTextEmail.requestFocus();
     }
 
     @Override
     public void setPasswordError(String errorMessage) {
-
+        editTextPassword.setError(errorMessage);
+        editTextPassword.requestFocus();
     }
 
     private void disableInputs(boolean disable) {
-
+        if (disable) {
+            editTextPassword.setEnabled(false);
+            editTextEmail.setEnabled(false);
+            textViewRegister.setEnabled(false);
+            buttonLogin.setEnabled(false);
+        } else {
+            editTextPassword.setEnabled(true);
+            editTextEmail.setEnabled(true);
+            textViewRegister.setEnabled(true);
+            buttonLogin.setEnabled(true);
+        }
     }
 
 }

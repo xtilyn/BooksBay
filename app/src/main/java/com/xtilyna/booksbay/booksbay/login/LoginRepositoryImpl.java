@@ -29,6 +29,7 @@ public class LoginRepositoryImpl implements LoginRepository{
 
     @Override
     public void loginUser(String email, String password) {
+        Log.d(TAG, "logging in user...");
         try {
             final FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signInWithEmailAndPassword(email, password)
