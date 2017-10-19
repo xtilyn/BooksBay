@@ -9,11 +9,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xtilyna.booksbay.booksbay.R;
+import com.xtilyna.booksbay.booksbay.home.ui.HomeActivity;
 import com.xtilyna.booksbay.booksbay.register.ui.RegisterActivity;
 import com.xtilyna.booksbay.booksbay.login.LoginPresenter;
 import com.xtilyna.booksbay.booksbay.login.LoginPresenterImpl;
@@ -105,6 +106,25 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     public void setPasswordError(String errorMessage) {
         editTextPassword.setError(errorMessage);
         editTextPassword.requestFocus();
+    }
+
+    @Override
+    public void showErrorToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void navigateToHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        // Closing all the Activities
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // Add new Flag to start new Activity
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Staring Login Activity
+        startActivity(intent);
     }
 
     private void disableInputs(boolean disable) {

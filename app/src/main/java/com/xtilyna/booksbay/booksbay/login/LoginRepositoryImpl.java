@@ -50,7 +50,7 @@ public class LoginRepositoryImpl implements LoginRepository{
                                             context.getString(R.string.invalidUserErrorMessage));
                                 } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                     postEvent(
-                                            LoginEvent.ON_INVALID_CREDENTIALS_ERROR,
+                                            LoginEvent.ON_PASSWORD_ERROR,
                                             context.getString(R.string.invalidCredentialsErrorMessage));
                                 } else {
                                     postEvent(

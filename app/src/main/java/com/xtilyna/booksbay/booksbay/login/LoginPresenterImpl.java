@@ -72,8 +72,11 @@ public class LoginPresenterImpl implements LoginPresenter{
     @Subscribe
     public void onEventMainThread(LoginEvent event) {
         loginView.showProgress(false);
-        // TODO
-        // if login success, create new login session
+        if (event.getEventType() == LoginEvent.ON_LOGIN_SUCCESS) {
+            loginView.navigateToHomeActivity();
+        } else {
+            loginView.showErrorToast(event.getMessage());
+        }
     }
 
     private boolean isPasswordValid(String password) {

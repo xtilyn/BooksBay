@@ -8,4 +8,7 @@ public interface LoginView {
     void setEmailEdittextError(String errorMessage);
     void setPasswordError(String errorMessage);
 
+    void showErrorToast(String message);
+    void navigateToHomeActivity();
+
 }
