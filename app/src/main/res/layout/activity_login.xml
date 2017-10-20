@@ -25,7 +25,8 @@
             android:id="@+id/imageview_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_marginTop="50dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -54,6 +55,17 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/textview_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:text="@string/forgot_password"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
         <Button
             android:id="@+id/button_login"
             android:layout_width="match_parent"
@@ -61,16 +73,35 @@
             android:layout_marginTop="20dp"
             android:text="@string/sign_in" />
 
-        <TextView
-            android:id="@+id/textview_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:text="@string/create_an_account"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="bottom|center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:text="@string/don_t_have_an_account"
+
+                android:gravity="bottom|center_horizontal"/>
+
+            <TextView
+                android:id="@+id/textview_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:text="@string/create_an_account"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

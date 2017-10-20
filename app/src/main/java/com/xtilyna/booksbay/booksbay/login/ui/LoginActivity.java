@@ -85,6 +85,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         loginPresenter.validateLogin(email, password);
     }
 
+    @OnClick(R.id.textview_forgot_password)
+    public void onForgotPasswordClick() {
+        Log.d(TAG, "onForgotPasswordClick: sending email to reset password...");
+        String email = editTextEmail.getText().toString();
+        loginPresenter.forgotPassword(email);
+    }
+
     @Override
     public void showProgress(boolean show) {
         if (show) {

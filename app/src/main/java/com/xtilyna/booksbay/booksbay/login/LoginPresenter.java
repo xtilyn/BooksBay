@@ -11,4 +11,6 @@ public interface LoginPresenter {
 
     void validateLogin(String email, String password);
     void onEventMainThread(LoginEvent event);
+
+    void forgotPassword(String email);
 }

@@ -79,6 +79,15 @@ public class LoginPresenterImpl implements LoginPresenter{
         }
     }
 
+    @Override
+    public void forgotPassword(String email) {
+        if (TextUtils.isEmpty(email)) {
+            loginView.setEmailEdittextError(context.getString(R.string.please_enter_email));
+            return;
+        }
+        loginRepository.forgotPassword(email);
+    }
+
     private boolean isPasswordValid(String password) {
         return password.length() > 4;
     }

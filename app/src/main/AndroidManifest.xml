@@ -30,7 +30,12 @@
         <activity
             android:name=".register.ui.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu.ui.MenuActivity"></activity>
+        <activity android:name=".menu.ui.MenuActivity" />
+        <activity
+            android:name=".messages.MessagesActivity"
+            android:label="@string/title_activity_messages"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".profile.ProfileActivity"></activity>
     </application>
 
 </manifest>

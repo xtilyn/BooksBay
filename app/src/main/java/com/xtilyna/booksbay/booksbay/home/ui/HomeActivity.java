@@ -100,6 +100,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
             R.id.navigation_profile,
             R.id.navigation_menu})
     public void onNavigationButtonClick(View view) {
-        bottomNavigationHelper.onNavigationButtonClick(view.getId());
+        int selectedItem = bottomNavigationHelper.onNavigationButtonClick(view.getId());
+        // TODO set selected item color
     }
 }

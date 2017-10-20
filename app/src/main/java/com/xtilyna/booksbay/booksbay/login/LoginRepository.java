@@ -6,4 +6,5 @@ public interface LoginRepository {
     void loginUser(String email, String password);
     void createLoginSession();
 
+    void forgotPassword(String email);
 }

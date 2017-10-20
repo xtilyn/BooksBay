@@ -91,6 +91,11 @@ public class LoginRepositoryImpl implements LoginRepository{
         // TODO
     }
 
+    @Override
+    public void forgotPassword(String email) {
+        // TODO
+    }
+
     private void postEvent(int type, String message) {
         LoginEvent event = new LoginEvent();
         event.setEventType(type);

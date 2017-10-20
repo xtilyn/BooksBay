@@ -8,6 +8,7 @@ public class LoginEvent {
     public final static int ON_INVALID_USER_ERROR = 2;
     public final static int ON_SIGN_IN_ERROR = 3;
     public final static int ON_LOGIN_SUCCESS = 4;
+    public final static int ON_PASSWORD_RESET_EMAIL_SEND = 5; // TODO
 
     private int eventType;
     private String message;
