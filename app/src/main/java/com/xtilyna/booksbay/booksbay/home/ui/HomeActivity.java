@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,12 +35,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.home_error_message) TextView errorMessage;
     @BindView(R.id.home_error_message_linearlayout) LinearLayout linearLayout;
+    @BindView(R.id.navigation_home) ImageView navigationHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        navigationHome.setImageResource(R.drawable.ic_home_color_accent);
         setSupportActionBar(toolbar);
 
         homePresenter = new HomePresenterImpl(HomeActivity.this, getApplicationContext());
@@ -100,7 +103,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
             R.id.navigation_profile,
             R.id.navigation_menu})
     public void onNavigationButtonClick(View view) {
-        int selectedItem = bottomNavigationHelper.onNavigationButtonClick(view.getId());
-        // TODO set selected item color
+        bottomNavigationHelper.onNavigationButtonClick(view.getId());
     }
 }

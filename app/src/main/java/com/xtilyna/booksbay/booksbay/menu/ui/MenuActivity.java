@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Utils.BottomNavigationHelper;
@@ -17,6 +18,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MenuActivity extends AppCompatActivity implements MenuView {
+
+    // UI references
+    @BindView(R.id.navigation_menu)
+    ImageView navigationMenu;
 
     //    private List<MenuItem> recyclerviewData;
     private MenuPresenter menuPresenter;
@@ -33,6 +38,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
+        navigationMenu.setImageResource(R.drawable.ic_menu_color_accent);
 //
 //        recyclerviewData = new ArrayList<>();
 //        RecyclerViewHelper.setupRecyclerView(

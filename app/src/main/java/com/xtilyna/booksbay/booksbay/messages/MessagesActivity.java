@@ -6,15 +6,24 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.xtilyna.booksbay.booksbay.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MessagesActivity extends AppCompatActivity {
+
+    // UI references
+    @BindView(R.id.navigation_messages) ImageView navMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
+        ButterKnife.bind(this);
+        navMessages.setImageResource(R.drawable.ic_chat_color_accent);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
