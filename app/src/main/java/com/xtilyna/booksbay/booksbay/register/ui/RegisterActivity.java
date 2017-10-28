@@ -1,6 +1,7 @@
 package com.xtilyna.booksbay.booksbay.register.ui;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -208,6 +210,13 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onRegisterSuccess() {
+        // Hide virtual keyboard
+        // Check if no view has focus:
+        View view = RegisterActivity.this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
         viewPager.setCurrentItem(1);
         Toast.makeText(this, getString(R.string.sign_up_successful), Toast.LENGTH_LONG).show();
     }
