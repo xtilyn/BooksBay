@@ -49,6 +49,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                             // signed in user can be handled in the listener.
                             // TODO display cause(s) of unsuccessful task (instanceof <FirebaseException>)
                             if (!task.isSuccessful()) {
+                                Log.d(TAG, "createUserWithEmail: " + task.getException());
                                 postEvent(RegisterEvent.onFailedToRegisterError, context.getString(R.string.auth_failed));
                             } else if (task.isSuccessful()){
                                 Log.d(TAG, "createUserWithEmail: onComplete: sign up successful. Sending verification email...");
@@ -75,6 +76,8 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                         public void onComplete(@NonNull Task<Void> task) {
                             if (!task.isSuccessful()) {
                                 postEvent(RegisterEvent.onVerificationEmailError, context.getString(R.string.email_verification_error));
+                            } else {
+                                Log.d(TAG, "sendVerificationEmail: email verification sent.");
                             }
                         }
                     });
@@ -82,14 +85,13 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     }
 
     private void addNewUserAccountSettings(final String email, final String displayName, final String location) {
-
+        Log.d(TAG, "addNewUserAccountSettings: adding user account settings to database...");
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (firebaseUser != null) {
             final String userID = firebaseUser.getUid();
             final DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-            //add new user to the database
             User user = new User(userID, email, displayName);
             reference.child(context.getString(R.string.users))
                     .child(userID)

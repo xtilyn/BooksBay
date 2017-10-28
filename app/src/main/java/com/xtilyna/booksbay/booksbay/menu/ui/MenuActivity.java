@@ -4,14 +4,19 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Utils.BottomNavigationHelper;
+import com.xtilyna.booksbay.booksbay.Utils.RecyclerViewHelper;
+import com.xtilyna.booksbay.booksbay.entities.MenuItem;
 import com.xtilyna.booksbay.booksbay.menu.MenuPresenter;
 import com.xtilyna.booksbay.booksbay.menu.MenuPresenterImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,15 +25,11 @@ import butterknife.OnClick;
 public class MenuActivity extends AppCompatActivity implements MenuView {
 
     // UI references
-    @BindView(R.id.navigation_menu)
-    ImageView navigationMenu;
+    @BindView(R.id.navigation_menu) ImageView navigationMenu;
+    @BindView(R.id.recyclerview_menu) RecyclerView recyclerView;
 
-    //    private List<MenuItem> recyclerviewData;
     private MenuPresenter menuPresenter;
     private BottomNavigationHelper bottomNavigationHelper;
-
-    // UI references
-//    @BindView(R.id.recyclerview_menu) RecyclerView recyclerView;
 
     private AlertDialog confirmLogoutDialog;
 
@@ -39,20 +40,34 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
         navigationMenu.setImageResource(R.drawable.ic_menu_color_accent);
-//
-//        recyclerviewData = new ArrayList<>();
-//        RecyclerViewHelper.setupRecyclerView(
-//                getApplicationContext(),
-//                recyclerView,
-//                RecyclerViewHelper.linearVertical,
-//                new MenuAdapter(this, recyclerviewData),
-//                recyclerviewData
-//        );
+
+        List<MenuItem> recyclerviewData = new ArrayList<>();
+        setupRecyclerviewData(recyclerviewData);
+        RecyclerViewHelper.setupRecyclerView(
+                getApplicationContext(),
+                recyclerView,
+                RecyclerViewHelper.LINEAR_VERTICAL,
+                new MenuAdapter(this, recyclerviewData)
+        );
+
 
         menuPresenter = new MenuPresenterImpl(this, getApplicationContext());
         bottomNavigationHelper = new BottomNavigationHelper(this);
         setupDialogs();
 
+    }
+
+    private void setupRecyclerviewData(List<MenuItem> data) {
+        String[] names = getResources().getStringArray(R.array.menu_items);
+        int[] iconIds = {
+                R.drawable.ic_profile,
+                R.drawable.ic_notifications,
+                R.drawable.ic_block,
+                R.drawable.ic_info
+        };
+        for (int i=0; i<names.length && i<iconIds.length; i++) {
+            data.add(new MenuItem(names[i], iconIds[i]));
+        }
     }
 
     private void setupDialogs() {

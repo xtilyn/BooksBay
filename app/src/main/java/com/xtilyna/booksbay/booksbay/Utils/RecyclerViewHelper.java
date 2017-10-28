@@ -10,26 +10,25 @@ import java.util.List;
 
 public class RecyclerViewHelper {
 
-    public final static int linearVertical = 0;
-    public final static int linearHorizontal = 1;
-    public final static int grid = 2;
+    public final static int LINEAR_VERTICAL = 0;
+    public final static int LINEAR_HORIZONTAL = 1;
+    public final static int GRID = 2;
 
     public static void setupRecyclerView(
             Context context,
             RecyclerView recyclerView,
             int layoutType,
-            RecyclerView.Adapter adapter,
-            List data) {
+            RecyclerView.Adapter adapter) {
 
         recyclerView.setAdapter(adapter);
         switch (layoutType) {
-            case linearVertical:
+            case LINEAR_VERTICAL:
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                 break;
-            case linearHorizontal:
+            case LINEAR_HORIZONTAL:
                 recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                 break;
-            case grid:
+            case GRID:
                 // TODO
                 break;
         }

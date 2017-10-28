@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     // UI in dialogs
     EditText confirmPasswordEdittext;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +47,18 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
         setupViewPager();
         initDialogs();
 
+    }
+
+    @Override
+    protected void onStart() {
+        registerPresenter.onStart();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        registerPresenter.onStop();
+        super.onStop();
     }
 
     private void setupViewPager() {
@@ -137,10 +148,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onBackPressed() {
-        if (viewPager.getCurrentItem() == 1)
-            viewPager.setCurrentItem(0);
-        else
-            super.onBackPressed();
+        super.onBackPressed();
     }
 
     @Override

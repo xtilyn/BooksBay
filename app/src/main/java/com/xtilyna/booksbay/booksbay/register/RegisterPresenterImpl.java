@@ -103,9 +103,13 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     @Override
     public void onEventMainThread(RegisterEvent event) {
         registerView.showProgress(false);
-        if (event.getEventType() == RegisterEvent.onRegisterSuccess)
+        if (event.getEventType() == RegisterEvent.onRegisterSuccess) {
+            Log.d(TAG, "onEventMainThread: register success.");
             registerView.onRegisterSuccess();
-        else
+        }
+        else {
+            Log.d(TAG, "onEventMainThread: register unsuccessful");
             registerView.onRegisterUnsuccessful(event.getMessage());
+        }
     }
 }
