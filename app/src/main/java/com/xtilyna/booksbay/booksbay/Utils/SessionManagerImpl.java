@@ -8,6 +8,9 @@ public class SessionManagerImpl implements SessionManager {
 
     @Override
     public void logoutUser() {
+// Clearing all data from Shared Preferences
+        //editor.clear();
+        //editor.commit();
 
     }
 

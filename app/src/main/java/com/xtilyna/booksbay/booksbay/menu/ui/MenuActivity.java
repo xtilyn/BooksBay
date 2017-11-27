@@ -91,6 +91,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
     }
 
     @Override
+    public void navigateToLogin() {
+        // TODO this method is used by authStateListener only
+    }
+
+    @Override
     public void showSaveChangesButton(boolean show) {
 
     }

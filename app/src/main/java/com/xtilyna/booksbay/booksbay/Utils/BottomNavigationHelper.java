@@ -8,7 +8,7 @@ import android.util.Log;
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.home.ui.HomeActivity;
 import com.xtilyna.booksbay.booksbay.menu.ui.MenuActivity;
-import com.xtilyna.booksbay.booksbay.messages.MessagesActivity;
+import com.xtilyna.booksbay.booksbay.messages.ui.MessagesActivity;
 import com.xtilyna.booksbay.booksbay.profile.ProfileActivity;
 
 public class BottomNavigationHelper {

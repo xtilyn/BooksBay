@@ -64,6 +64,8 @@ public class LoginRepositoryImpl implements LoginRepository{
                                             Log.d(TAG, "onComplete: success, email is verified. Creating login session for " +
                                                     user.getDisplayName() + " " + user.getEmail());
 
+                                            postEvent(LoginEvent.ON_LOGIN_SUCCESS, context.getString(R.string.welcome_string));
+
                                             createLoginSession();
 
                                         } else {
@@ -84,6 +86,7 @@ public class LoginRepositoryImpl implements LoginRepository{
         } catch (Exception e) {
             postEvent(LoginEvent.ON_SIGN_IN_ERROR, e.getMessage());
         }
+
     }
 
     @Override
