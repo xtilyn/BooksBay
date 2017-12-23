@@ -41,6 +41,8 @@
     <string name="please_enter_email">Please enter your email</string>
     <string name="title_activity_messages">Messages</string>
     <string name="welcome_string">Welcome</string>
+    <string name="user_profile_picture">user_profile_picture</string>
+    <string name="profile">Profile</string>
 
     <array name="menu_items">
         <item>Account</item>

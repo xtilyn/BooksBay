@@ -9,7 +9,7 @@ import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.home.ui.HomeActivity;
 import com.xtilyna.booksbay.booksbay.menu.ui.MenuActivity;
 import com.xtilyna.booksbay.booksbay.messages.ui.MessagesActivity;
-import com.xtilyna.booksbay.booksbay.profile.ProfileActivity;
+import com.xtilyna.booksbay.booksbay.profile.ui.ProfileActivity;
 
 public class BottomNavigationHelper {
 

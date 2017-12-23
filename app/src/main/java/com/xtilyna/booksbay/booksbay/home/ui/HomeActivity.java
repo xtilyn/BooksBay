@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Utils.BottomNavigationHelper;
-import com.xtilyna.booksbay.booksbay.Utils.SessionManagerImpl;
 import com.xtilyna.booksbay.booksbay.home.HomePresenter;
 import com.xtilyna.booksbay.booksbay.home.HomePresenterImpl;
 import com.xtilyna.booksbay.booksbay.login.ui.LoginActivity;

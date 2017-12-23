@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xtilyna.booksbay.booksbay.profile.ProfileActivity">
+    tools:context="com.xtilyna.booksbay.booksbay.profile.ui.ProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarLayout">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/layout_bottom_navigation"
         android:layout_width="match_parent"
@@ -14,16 +29,21 @@
         android:layout_alignParentStart="true"
         android:id="@+id/bottom_navigation" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+    <include
+        layout="@layout/layout_profile_snippet"
+        android:id="@+id/layout_profile_snippet"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="124dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="158dp"
-        android:text="profile activity " />
+        android:layout_alignParentTop="true" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_profile_snippet"
+        android:layout_above="@+id/bottom_navigation"
+        />
+
 
 </RelativeLayout>
