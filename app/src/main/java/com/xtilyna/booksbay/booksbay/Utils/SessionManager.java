@@ -7,8 +7,7 @@ import com.xtilyna.booksbay.booksbay.entities.UserAccountSettings;
 public interface SessionManager {
 
     void logoutUser();
-    void createLoginSession();
+    void createLoginSession(User user);
     void modifyUserAccountSettings(UserAccountSettings userAccountSettings);
-    void modifyUserInformation(User user);
 
 }

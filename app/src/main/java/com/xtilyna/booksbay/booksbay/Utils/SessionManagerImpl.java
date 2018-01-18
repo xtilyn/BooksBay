@@ -24,7 +24,7 @@ public class SessionManagerImpl implements SessionManager {
     private static final String TAG = "SessionManager";
 
     // Sharedpref file name
-    private static final String PREF_NAME = "AndroidHivePref.BooksBay";
+    private static final String PREF_NAME = "ChristilynPref.BooksBay";
 
     // All Shared Preferences Keys
     public static final String IS_LOGIN = "IsLoggedIn";
@@ -35,33 +35,43 @@ public class SessionManagerImpl implements SessionManager {
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
 
+    public static final String KEY_USERID = "userId";
+
+    // user account settings data
+    public static final String KEY_LOCATION = "location";
+    public static final String KEY_WEBSITES = "websites";
+
     // Constructor
     public SessionManagerImpl(Context context){
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        // editor = pref.edit();
     }
 
     @Override
     public void logoutUser() {
 // Clearing all data from Shared Preferences
-        //editor.clear();
-        //editor.commit();
+        editor = pref.edit();
+        editor.clear();
+        editor.apply();
 
     }
 
     @Override
-    public void createLoginSession() {
-        // TODO save all user settings
+    public void createLoginSession(User user) {
+        editor = pref.edit();
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_NAME, user.getDisplay_name());
+        editor.putString(KEY_EMAIL, user.getEmail());
+        editor.putString(KEY_USERID, user.getUserID());
+        editor.putString(KEY_LOCATION, user.getLocation());
+        editor.apply();
     }
 
     @Override
     public void modifyUserAccountSettings(UserAccountSettings userAccountSettings) {
-
+        editor = pref.edit();
+        editor.putString(KEY_WEBSITES, userAccountSettings.getWebsites());
+        editor.apply();
     }
 
-    @Override
-    public void modifyUserInformation(User user) {
-
-    }
 }

@@ -1,6 +1,8 @@
 package com.xtilyna.booksbay.booksbay.login.ui;
 
 
+import com.xtilyna.booksbay.booksbay.entities.User;
+
 public interface LoginView {
 
     void showProgress(boolean show);

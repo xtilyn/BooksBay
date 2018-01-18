@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xtilyna.booksbay.booksbay.R;
+import com.xtilyna.booksbay.booksbay.Utils.SessionManagerImpl;
+import com.xtilyna.booksbay.booksbay.entities.User;
 import com.xtilyna.booksbay.booksbay.home.ui.HomeActivity;
 import com.xtilyna.booksbay.booksbay.register.ui.RegisterActivity;
 import com.xtilyna.booksbay.booksbay.login.LoginPresenter;
@@ -122,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void navigateToHomeActivity() {
+
         Intent intent = new Intent(this, HomeActivity.class);
         // Closing all the Activities
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

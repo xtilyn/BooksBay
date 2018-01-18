@@ -6,35 +6,24 @@ import java.util.ArrayList;
 public class UserAccountSettings {
 
     // user's location
-    private String location;
     // user's social media sites to increase credibility (optional)
-    private ArrayList<String> websites;
+    private String websites;
 
-
-    public UserAccountSettings(String location) {
-        this.location = location;
-    }
-
-    public ArrayList<String> getWebsites() {
-        return websites;
-    }
-
-    public void setWebsites(ArrayList<String> websites) {
+    public UserAccountSettings(String websites) {
         this.websites = websites;
     }
 
-    public String getLocation() {
-        return location;
+    public String getWebsites() {
+        return websites;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setWebsites(String websites) {
+        this.websites = websites;
     }
 
     @Override
     public String toString() {
-        return "UserAccountSettings{" +
-                "location='" + location + '\'' +
+        return "UserAccountSettings{"  +
                 ", websites=" + websites +
                 '}';
     }

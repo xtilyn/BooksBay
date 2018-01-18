@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.Utils.EmailAddressValidator;
+import com.xtilyna.booksbay.booksbay.Utils.SessionManagerImpl;
 import com.xtilyna.booksbay.booksbay.login.events.LoginEvent;
 import com.xtilyna.booksbay.booksbay.login.ui.LoginView;
 

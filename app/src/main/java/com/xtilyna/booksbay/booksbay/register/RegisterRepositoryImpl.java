@@ -92,12 +92,12 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             final String userID = firebaseUser.getUid();
             final DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-            User user = new User(userID, email, displayName);
+            User user = new User(userID, email, displayName, location);
             reference.child(context.getString(R.string.users))
                     .child(userID)
                     .setValue(user);
 
-            UserAccountSettings settings = new UserAccountSettings(location);
+            UserAccountSettings settings = new UserAccountSettings(" ");
             reference.child(context.getString(R.string.user_account_settings))
                     .child(userID)
                     .setValue(settings);

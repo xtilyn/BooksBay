@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.xtilyna.booksbay.booksbay.R;
+import com.xtilyna.booksbay.booksbay.Utils.SessionManagerImpl;
+import com.xtilyna.booksbay.booksbay.entities.User;
+import com.xtilyna.booksbay.booksbay.entities.UserAccountSettings;
 import com.xtilyna.booksbay.booksbay.login.events.LoginEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -91,7 +94,19 @@ public class LoginRepositoryImpl implements LoginRepository{
 
     @Override
     public void createLoginSession() {
-        // TODO
+        SessionManagerImpl sessionManager = new SessionManagerImpl(context);
+        sessionManager.createLoginSession(fetchUserInfo());
+        sessionManager.modifyUserAccountSettings(fetchUserAccountSettings());
+    }
+
+    @Override
+    public User fetchUserInfo() {
+        return null;
+    }
+
+    @Override
+    public UserAccountSettings fetchUserAccountSettings() {
+        return null;
     }
 
     @Override
