@@ -56,7 +56,7 @@ public class MenuRepositoryImpl implements MenuRepository {
 
     @Override
     public void fetchUserAccountSettings() {
-
+        // TODO
     }
 
     private void postEvent(int eventType, String eventMessage) {

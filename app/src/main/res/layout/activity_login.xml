@@ -25,7 +25,7 @@
             android:id="@+id/imageview_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@mipmap/ic_launcher"
+            app:srcCompat="@drawable/BOOKSBAY"
             android:layout_marginTop="50dp"/>
 
         <android.support.design.widget.TextInputLayout
@@ -36,6 +36,7 @@
                 android:id="@+id/edittext_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text_material_light"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress" />
 
@@ -51,7 +52,9 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:imeActionId="@+id/login"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/secondary_text_material_light"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/sign_in" />
+            android:text="@string/sign_in"
+            android:background="@color/colorPrimary"/>
 
         <LinearLayout
             android:layout_width="match_parent"

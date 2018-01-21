@@ -71,7 +71,7 @@ public class MenuPresenterImpl implements MenuPresenter {
         }
     }
 
-    private void navigateToLogin() {
+    public void navigateToLogin() {
         Log.d(TAG, "navigateToLogin: redirecting user to login activity...");
         Intent i = new Intent(context, LoginActivity.class);
 
@@ -82,7 +82,7 @@ public class MenuPresenterImpl implements MenuPresenter {
         // Add new Flag to start new Activity
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //
-        // Staring Login Activity
+        // Starting Login Activity
         context.startActivity(i);
     }
 }

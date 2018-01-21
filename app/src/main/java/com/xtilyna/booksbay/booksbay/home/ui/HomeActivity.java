@@ -18,6 +18,7 @@ import com.xtilyna.booksbay.booksbay.home.HomePresenter;
 import com.xtilyna.booksbay.booksbay.home.HomePresenterImpl;
 import com.xtilyna.booksbay.booksbay.login.ui.LoginActivity;
 import com.xtilyna.booksbay.booksbay.newPost.ui.NewPostActivity;
+import com.xtilyna.booksbay.booksbay.register.ui.RegisterActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,8 +75,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView{
     }
 
     @Override
-    public void navigateToLogin() {
-        Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+    public void navigateToRegister() {
+        Intent i = new Intent(HomeActivity.this, RegisterActivity.class);
         finish();
         startActivity(i);
     }

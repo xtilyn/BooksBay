@@ -55,7 +55,7 @@ public class HomePresenterImpl implements HomePresenter{
                 onFailedToRecoverSession(event.getErrorMessage());
                 break;
             case HomeEvent.onUserNotLoggedInError:
-                homeView.navigateToLogin();
+                homeView.navigateToRegister();
                 break;
         }
     }
