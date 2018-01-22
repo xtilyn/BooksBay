@@ -2,6 +2,7 @@ package com.xtilyna.booksbay.booksbay.register.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xtilyna.booksbay.booksbay.R;
+import com.xtilyna.booksbay.booksbay.login.ui.LoginActivity;
 import com.xtilyna.booksbay.booksbay.register.RegisterPresenter;
 import com.xtilyna.booksbay.booksbay.register.RegisterPresenterImpl;
 import com.xtilyna.booksbay.booksbay.Utils.NonSwipeableViewPager;
@@ -23,6 +25,7 @@ import com.xtilyna.booksbay.booksbay.Utils.SectionsPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RegisterView {
 
@@ -230,6 +233,12 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
     public void onPasswordsDontMatch() {
         confirmPasswordEdittext.setError(getString(R.string.passwords_dont_match));
         confirmPasswordEdittext.requestFocus();
+    }
+
+    @OnClick(R.id.sign_in_btn)
+    public void navigateToLogin() {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
 }

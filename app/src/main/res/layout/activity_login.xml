@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xtilyna.booksbay.booksbay.login.ui.LoginActivity">
+    tools:context="com.xtilyna.booksbay.booksbay.login.ui.LoginActivity"
+    android:background="@color/colorPrimaryLight"
+    >
 
     <ProgressBar
         android:id="@+id/progressbar_login"
@@ -25,8 +27,9 @@
             android:id="@+id/imageview_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/BOOKSBAY"
-            android:layout_marginTop="50dp"/>
+            app:srcCompat="@drawable/booksbay"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/booksbay_logo" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
