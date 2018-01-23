@@ -66,23 +66,9 @@ public class MenuPresenterImpl implements MenuPresenter {
     public void onEventMainThread(MenuEvent menuEvent) {
         switch (menuEvent.getEventType()) {
             case MenuEvent.onLogoutUserEvent:
-                navigateToLogin();
+                menuView.navigateToRegister();
                 break;
         }
     }
 
-    public void navigateToLogin() {
-        Log.d(TAG, "navigateToLogin: redirecting user to login activity...");
-        Intent i = new Intent(context, LoginActivity.class);
-
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-        // Starting Login Activity
-        context.startActivity(i);
-    }
 }
