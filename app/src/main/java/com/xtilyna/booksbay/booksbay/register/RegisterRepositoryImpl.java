@@ -10,11 +10,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.xtilyna.booksbay.booksbay.R;
 import com.xtilyna.booksbay.booksbay.entities.User;
 import com.xtilyna.booksbay.booksbay.entities.UserAccountSettings;
@@ -34,7 +31,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     }
 
     @Override
-    public void registerNewUser(String email, String password, String displayName, String location) {
+    public void registerNewUser(final String email, String password, final String displayName, final String location) {
 
         try {
             final FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -53,7 +50,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                                 postEvent(RegisterEvent.onFailedToRegisterError, context.getString(R.string.auth_failed));
                             } else if (task.isSuccessful()){
                                 Log.d(TAG, "createUserWithEmail: onComplete: sign up successful. Sending verification email...");
-                                sendVerificationEmail();
+                                sendVerificationEmail(email, displayName, location);
                             }
                         }
                     });
@@ -61,12 +58,10 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             postEvent(RegisterEvent.onFailedToRegisterError, e.getMessage());
         }
 
-        addNewUserAccountSettings(email, displayName, location);
-
     }
 
     @Override
-    public void sendVerificationEmail() {
+    public void sendVerificationEmail(final String email, final String displayName, final String location) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
@@ -78,6 +73,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                                 postEvent(RegisterEvent.onVerificationEmailError, context.getString(R.string.email_verification_error));
                             } else {
                                 Log.d(TAG, "sendVerificationEmail: email verification sent.");
+                                addNewUserAccountSettings(email, displayName, location);
                             }
                         }
                     });
