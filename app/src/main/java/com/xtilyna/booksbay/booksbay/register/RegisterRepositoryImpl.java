@@ -73,6 +73,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                                 postEvent(RegisterEvent.onVerificationEmailError, context.getString(R.string.email_verification_error));
                             } else {
                                 Log.d(TAG, "sendVerificationEmail: email verification sent.");
+                                postEvent(RegisterEvent.onRegisterSuccess, context.getString(R.string.email_verification_sent));
                                 addNewUserAccountSettings(email, displayName, location);
                             }
                         }
@@ -99,7 +100,6 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                     .setValue(settings);
 
             FirebaseAuth.getInstance().signOut();
-            postEvent(RegisterEvent.onRegisterSuccess, context.getString(R.string.email_verification_sent));
         }
 
     }

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "531531835680-e6an04e7r2ttclqch48tmbln8ik8nth9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xtilyna.booksbay.booksbay",
+            "certificate_hash": "4662ce75668d255b4f504be86f52af1e1a63d6f6"
+          }
+        },
+        {
           "client_id": "531531835680-pll270p5i0aqbkcp3qcgv6hd560ho99m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
