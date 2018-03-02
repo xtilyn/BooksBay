@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xtilyna.booksbay.booksbay.register.ui.RegisterSectionOne">
+    tools:context="com.xtilyna.booksbay.booksbay.register.ui.RegisterSectionOne"
+    >
 
     <ProgressBar
         android:id="@+id/progressbar_register_section_one"
@@ -15,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -26,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/display_name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/secondary_text_material_light"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -39,7 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/secondary_text_material_light"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/secondary_text_material_light"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="onSectionOneContinuteButtonClick"
-            android:text="@string/action_continue" />
+            android:text="@string/action_continue"
+            android:background="@drawable/action_btn_selector"/>
 
     </LinearLayout>
 

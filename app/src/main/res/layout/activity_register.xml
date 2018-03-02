@@ -19,6 +19,7 @@
     </com.xtilyna.booksbay.booksbay.Utils.NonSwipeableViewPager>
 
     <TextView
+        android:id="@+id/already_have_an_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/already_have_an_account"

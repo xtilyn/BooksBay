@@ -10,7 +10,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="auth_failed">Failed to register new account. Please try again later.</string>
+    <string name="auth_failed">Failed to register new account. </string>
     <string name="field_required_error">This field is required.</string>
     <string name="invalid_email_error">This email address is invalid.</string>
     <string name="invalid_password_error">This password is too short.</string>

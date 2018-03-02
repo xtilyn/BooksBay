@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,7 +48,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
                             // TODO display cause(s) of unsuccessful task (instanceof <FirebaseException>)
                             if (!task.isSuccessful()) {
                                 Log.d(TAG, "createUserWithEmail: " + task.getException());
-                                postEvent(RegisterEvent.onFailedToRegisterError, context.getString(R.string.auth_failed));
+                                postEvent(RegisterEvent.onFailedToRegisterError, context.getString(R.string.auth_failed) + task.getException().getMessage());
                             } else if (task.isSuccessful()){
                                 Log.d(TAG, "createUserWithEmail: onComplete: sign up successful. Sending verification email...");
                                 sendVerificationEmail(email, displayName, location);

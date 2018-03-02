@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -29,12 +30,16 @@ import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RegisterView {
 
+    private final String TAG = "RegisterActivity";
+
     private RegisterPresenter registerPresenter;
     private RegisterSectionOne registerSectionOne;
 
     // UI References
     @BindView(R.id.viewpager_register)
     NonSwipeableViewPager viewPager;
+    @BindView(R.id.already_have_an_account) TextView signInTextview;
+    @BindView(R.id.sign_in_btn) Button signInBtn;
 
     private Dialog confirmPasswordDialog;
     private Dialog setLocationDialog;
@@ -128,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
      */
     public void onSetLocationButtonClick(View view) {
         // TODO placeholder user location...
+        Log.d(TAG, "onSetLocationButtonClick: setting location...");
         String location = "Calgary, AB";
         dismissSetLocationDialog();
         registerPresenter.registerNewUser(location);
@@ -218,8 +224,11 @@ public class RegisterActivity extends AppCompatActivity implements ViewPager.OnP
         View view = RegisterActivity.this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+        signInTextview.setVisibility(View.GONE);
+        signInBtn.setVisibility(View.GONE);
         viewPager.setCurrentItem(1);
         Toast.makeText(this, getString(R.string.sign_up_successful), Toast.LENGTH_LONG).show();
     }

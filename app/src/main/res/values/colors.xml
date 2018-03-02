@@ -8,4 +8,5 @@
     <color name="secondary_text_material_light">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="veryLightGray">#D3D3D3</color>
 </resources>
