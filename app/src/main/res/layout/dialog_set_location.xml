@@ -20,6 +20,6 @@
         android:layout_marginTop="20dp"
         android:text="@string/set_location"
         android:onClick="onSetLocationButtonClick"
-        android:background="@drawable/action_btn_selector"/>
+        android:background="@drawable/ripple_main"/>
 
 </LinearLayout>

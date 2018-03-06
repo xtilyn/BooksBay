@@ -68,7 +68,7 @@
             android:layout_marginTop="20dp"
             android:onClick="onSectionOneContinuteButtonClick"
             android:text="@string/action_continue"
-            android:background="@drawable/action_btn_selector"/>
+            android:background="@drawable/ripple_main"/>
 
     </LinearLayout>
 
