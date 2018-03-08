@@ -35,10 +35,15 @@
             android:name=".messages.ui.MessagesActivity"
             android:label="@string/title_activity_messages"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".profile.ui.ProfileActivity"
+        <activity
+            android:name=".profile.ui.ProfileActivity"
             android:label="@string/profile"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".intro.IntroActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_intro"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>
